@@ -7,7 +7,7 @@
 
 ## Machine Leaning
 * [Math4ML](https://github.com/venkatacrc/Notes/tree/master/Math4ML)
-* [ML] (https://github.com/venkatacrc/Notes/tree/master/MachineLearning)
+* [ML](https://github.com/venkatacrc/Notes/tree/master/MachineLearning)
 * [Papers](https://github.com/venkatacrc/Notes/tree/master/ML_papers)
 
 ## Coding
