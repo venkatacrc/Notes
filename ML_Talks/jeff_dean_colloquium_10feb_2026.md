@@ -34,9 +34,52 @@
 *   ~100M multiply/adds per 10ms of speech inference
 *   Scenario: 3 mins of speech per user per day?
 *   1 billion users x 3 mins/day x 100M ops/10ms
-*   = 18,000,000,000,000,000,000 ops/day assume 1B ops/sec/core: ~20M core days / day
+*   = 1,800,000,000,000,000,000,000 ops/day assume 1B ops/sec/core: ~20M core days / day
+*   with traditional hardware need to ~double the compute footprint
 #### 2014
 * Models that Map One Sequence to Another are Powerful
 * [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/pdf/1409.3215)
 *   Using a neural encoder over an input sequence to generate state, use that to initialize state of a neural decoder. Scale up LSTMs and this works.
+
+#### 2015
+* [TPUv1 for Neural Network Inference](https://arxiv.org/pdf/1704.04760), 92 Teraops is 15x-30x faster and 30x-80x more energy efficient
+* reduced precision ok ~1.2 * ~0.6 = ~0.7, handful of specific operations
+* Specialization is much more efficient: Compared to contemporary CPUs & GPUs
+
+#### 2016
+* Specialized TPU Supercomputers for Neural Network Training
+* Connect thounds of chips together (TPU pods) with custom high-speed networks to enable faster neural network training
+* [TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning with Hardware Support for Embeddings](https://arxiv.org/pdf/2304.01433)
+* [Continual Hardware Performance Scaling](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/)
+* ~3600X peak performance per pod vs. TPU v2
+* ~30X energy efficiency improvement vs. TPU v2
+* Open Source tools enable the whole community - TensorFlow, PyTorch, JAX
+
+#### 2017
+* [Transformer Model Architecture: Attention Is All You Need](https://arxiv.org/pdf/1706.03762)
+* Don't try to force state into single recurrent distributed representation. Instead, save all past representations and attend to them.
+* Higher accuracy w/10x-100x less compute and 10x smaller models! - [Scaling Laws for Neural Language Models](https://arxiv.org/pdf/2001.08361)
+* Sparse Models (e.g. Mixture of Experts) Outperform Dense Models
+* [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/pdf/1701.06538)
+* Give model much larger capacity w/lots of experts but only activate a few chosen experts per token: (A) ~8x reduction in training compute cost for ~same accuracy, or (B) major accuracy improvements for same training compute cost
+* Continued Research on Sparse Models - Gemini 1.5 Pro, Gemini 2.0 / Gemini 2.5 use MoE architectures, building on a long line of Google research efforts on sparse models
+* [2020 GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding](https://arxiv.org/abs/2006.16668)
+* [2021 Scaling Vision with Sparse Mixture of Experts](https://arxiv.org/abs/2106.05974)
+* [2021 Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity](https://arxiv.org/abs/2101.03961)
+* [2022 Unified Scaling Laws for Routed Language Models](https://arxiv.org/abs/2202.01169)
+* [2022 Designing Effective Sparse Expert Models](https://ieeexplore.ieee.org/document/9835248)
+* [2023 From Sparse to Soft Mixtures of Experts](https://arxiv.org/abs/2308.00951)
+* [2024 Mixtures of Experts Unlock Parameter Scaling for Deep RL](https://arxiv.org/pdf/2402.08609)
+* [2024 Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](https://arxiv.org/abs/2404.02258)
+* [2024 DiPaCo: Distributed Path Composition](https://arxiv.org/abs/2403.10616)
+#### 2018
+* Language Modeling At Scale With Self-Supervised Data
+* There's lots of text in the world! Self-supervised learning on text can provide very large amounts of training data with the "right" answer known ("wrong guess" is used to provide gradient descent loss training signal.
+* Self-supervised learning on text with large models is one of the major reasons chat/language models have gotten so good
+* Fill-in-the-Blank (e.g. look in both directions, BERT)
+* [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/pdf/1810.04805)
+* Different kinds of training objectives: Autoregressive (look at prefix, predict next word)
+* [Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165)
+  
+  
 
