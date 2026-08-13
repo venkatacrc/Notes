@@ -6,6 +6,17 @@
 * Algorithmic and model architecure improvements have provided massive improvements as well
 * The kinds of computations we want to run and the hardware on which we run them is changing dramatically
 
+## Silent data corruption (SDC)
+*[Cores that don't count](https://storage.googleapis.com/gweb-research2023-media/pubtools/6169.pdf)
+* At large scale, all chips/machines/network cards/cables etc. don't always work as designed
+* Non-deterministically produce incorrect results, silently (sometimes related to dynamic conditions like temperature)
+* Challenging problem when running largely independent computation
+* Multiplicatively worse at scale with synchronous stochastic gradient descent
+* Can quickly spread results across thousands of components across ML supercomputer
+* Metrics anamoly: anamoly due to SDC. Anamoly with no SDC
+* Pathways Cotroller transparently handles SDC
+
+
 ### Neural Nets and Gradient Descent Key Building Blocks for AI
 * Key building block: backpropagation of errors (using chain rule) gives effective algorithm for updating the weights of a neural network to minimize errors on training data
 * Backpropagation of errors gives an algorithm for how to update the weights of the whole neural network based on errors observed at the outputs of the model
@@ -40,6 +51,9 @@
 * Models that Map One Sequence to Another are Powerful
 * [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/pdf/1409.3215)
 *   Using a neural encoder over an input sequence to generate state, use that to initialize state of a neural decoder. Scale up LSTMs and this works.
+* Distillation: Use Powerful "Teacher" Models to Make Smaller, Cheaper "Student" Models
+* [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531)
+* Gives much richer signal for training: try to get student to match "soft probability distribution" of large model
 
 #### 2015
 * [TPUv1 for Neural Network Inference](https://arxiv.org/pdf/1704.04760), 92 Teraops is 15x-30x faster and 30x-80x more energy efficient
@@ -80,6 +94,25 @@
 * [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/pdf/1810.04805)
 * Different kinds of training objectives: Autoregressive (look at prefix, predict next word)
 * [Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165)
-  
+* [Pathways: Asynchronous Distributed Dataflow for ML](https://arxiv.org/pdf/2203.12533) - Scalable software can simplify running large-scale computations - with JAX + Pathways,entire training process driven by a single Python process on one host
+
+#### 2022:
+* Thinking longer at inference time is very useful 
+* [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) - Prompting model to "show its work" improves accuracy on reasoning tasks dramatically
+
+#### 2021-Present
+* Reinforcement Learning for Post-Training - improve the capabilities of the model in many domains
+* Given pre-trained model, use RL for several purposes:
+* Encourage behaviors that are desired in the model's responses - style, length of responses. Safety properties (don't engage in some kinds of topics)
+* Enhance capabilities by showing the model hwo to tackle more complex problems
+* Key question: where does the reward signal come from?
+* Reward signal can come from many sources
+* RLHF: Use human-feedback to generate positive and negative rewards
+* RLMF: use machine-feedback from another model (often called a reward model). Prompt: "Please say whether you prefer response <A> or <B> for question <Q>"
+* RL in verifiable domains like math or coding
+* Generate proofs or mathematical solutions which can be checked with a theorem prover or another auomated system: give positive reward when it reasons correctly
+* Generate code to tackle various coding or software engineering problems, and then execute code in sandbox enviroment, give positive reward when code compiles and passes tests of correctness, negative reward otherwise
+* These dramatically improve the capabilities of the model many domains (especially in verifiable domains like math or coding)
+* Open research question: how can we improve effectiveness of RL in non-verifiable domains?
   
 
