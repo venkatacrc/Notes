@@ -52,8 +52,9 @@
 * [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/pdf/1409.3215)
 *   Using a neural encoder over an input sequence to generate state, use that to initialize state of a neural decoder. Scale up LSTMs and this works.
 * Distillation: Use Powerful "Teacher" Models to Make Smaller, Cheaper "Student" Models
-* [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531)
+* [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531) Distillation: Use large hgh quality model as "teacher" when training smaller "student" model
 * Gives much richer signal for training: try to get student to match "soft probability distribution" of large model
+* 
 
 #### 2015
 * [TPUv1 for Neural Network Inference](https://arxiv.org/pdf/1704.04760), 92 Teraops is 15x-30x faster and 30x-80x more energy efficient
@@ -86,6 +87,7 @@
 * [2024 Mixtures of Experts Unlock Parameter Scaling for Deep RL](https://arxiv.org/pdf/2402.08609)
 * [2024 Mixture-of-Depths: Dynamically allocating compute in transformer-based language models](https://arxiv.org/abs/2404.02258)
 * [2024 DiPaCo: Distributed Path Composition](https://arxiv.org/abs/2403.10616)
+
 #### 2018
 * Language Modeling At Scale With Self-Supervised Data
 * There's lots of text in the world! Self-supervised learning on text can provide very large amounts of training data with the "right" answer known ("wrong guess" is used to provide gradient descent loss training signal.
@@ -114,5 +116,26 @@
 * Generate code to tackle various coding or software engineering problems, and then execute code in sandbox enviroment, give positive reward when code compiles and passes tests of correctness, negative reward otherwise
 * These dramatically improve the capabilities of the model many domains (especially in verifiable domains like math or coding)
 * Open research question: how can we improve effectiveness of RL in non-verifiable domains?
+
+#### 2023: Speculative Decoding for Faster, More efficient Inference
+* Enables faster decoding from autoregressive models: 2X-3X in typical scenarios.
+* Change only the decoding algorithm: no architecture changes, no re-training.
+* No tradeiff: guaranteed identical output distribution
+* [Fast Inference from Transformers via Speculative Decoding](https://arxiv.org/pdf/2211.17192)
+* Observation 1: Decoding from large Transformers is memory bound: Hardware can do: XXX FPOPs per byte read and Tranformers need X FPOPs per byte read
+* Observation 2: Some tokens are easier to predict than others, example: Can you tell me what is sqrt of 7? Sure, the sqrt of 7(easier) is 2.646 (harder)
+* Idea (inspired by speculative execution): a fast drafter model quickly generates next several tokens and the target model checks them in parallel
+
+#### Innovations at Many Levels
+* Inference algorithms: Chain-of-Thought, Speculative Decoding, Inference-time compute scaling
+* Training algorithms: Unsupervised and self-supervised learning, asynchronous training, Distillation, SFT + RLxF
+* Model architecture: Word2Vec, Seq2Seq, Transformers, MoEs, Visual Transformers
+* Software abstractions: DistBelief, TensforFlow, PyTorch, JAX, Pathways
+* Hardware: TPUv1 -> TPUv2 -> TPUv3 -> TPUv4 -> TPUv5p -> Trillium -> Ironwood
+
+#### Gemini: Building the World's Most Advanced Models
+* Project started in Deb 2023
+* Goal: Train the world's 
+
   
 
