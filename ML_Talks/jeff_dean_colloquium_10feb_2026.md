@@ -110,7 +110,7 @@
 * Key question: where does the reward signal come from?
 * Reward signal can come from many sources
 * RLHF: Use human-feedback to generate positive and negative rewards
-* RLMF: use machine-feedback from another model (often called a reward model). Prompt: Please say whether you prefer response <A> or <B> for question <Q>
+* RLMF: use machine-feedback from another model (often called a reward model). Prompt: Please say whether you prefer response A or B for question Q
 * RL in verifiable domains like math or coding
 * Generate proofs or mathematical solutions which can be checked with a theorem prover or another auomated system: give positive reward when it reasons correctly
 * Generate code to tackle various coding or software engineering problems, and then execute code in sandbox enviroment, give positive reward when code compiles and passes tests of correctness, negative reward otherwise
@@ -169,6 +169,9 @@
 * **Inference Efficiency is Critical**
 * Demand for highly capable models is very high and growing fast
 * Making inference efficient is vital: Specialized hardware designed purely for inference will be important, Model and algorithmic improvements for efficient inference, Low latency for highly capable models is a huge plus: will enable new use cases
+* In the future, AI applied to automating chip design will help design efficient inference hardware with much shorter timelines and much less human effort => more specialized hardware that is more efficient
+* Leaderboard and common baselines enable data-driven decision making about how to improve
+* Multiple rounds of experimentation, Many experimentations at small scale, Advance smaller number of successful experiments to next scale, Every so often(few weeks) incorporate successful experiments demonstrated at largest experimental scale into new candidate baseline, Repeat
 
 
   
