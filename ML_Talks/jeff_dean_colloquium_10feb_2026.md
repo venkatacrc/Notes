@@ -110,7 +110,7 @@
 * Key question: where does the reward signal come from?
 * Reward signal can come from many sources
 * RLHF: Use human-feedback to generate positive and negative rewards
-* RLMF: use machine-feedback from another model (often called a reward model). Prompt: "Please say whether you prefer response <A> or <B> for question <Q>"
+* RLMF: use machine-feedback from another model (often called a reward model). Prompt: Please say whether you prefer response <A> or <B> for question <Q>
 * RL in verifiable domains like math or coding
 * Generate proofs or mathematical solutions which can be checked with a theorem prover or another auomated system: give positive reward when it reasons correctly
 * Generate code to tackle various coding or software engineering problems, and then execute code in sandbox enviroment, give positive reward when code compiles and passes tests of correctness, negative reward otherwise
@@ -135,7 +135,41 @@
 
 #### Gemini: Building the World's Most Advanced Models
 * Project started in Deb 2023
-* Goal: Train the world's 
+* Goal: Train the world's best multimodal models and use them all across Google
+* Gemini 1.0 Dec 2023
+* Gemini 1.5 Feb 2024 (demonstrated 10M token context window, Flash model)
+* Gemini 2.0 Dec 2024 (2.0 Flash as good as 1.5 Pro, multimodal live steaming, ...)
+* Gemini 2.0 Thinking: Jan 2025 (2.0 Flash Experimental Thinking)
+* Gemini 2.5 Mar 2025 (2.5 Pro released), Apr 2025 (2.5 Flash), Aug 2025 (2.5 Pro Deep Think)
+* Gemini 3.0 (3 Pro released)
+* [Introducing Gemini: our largest and most capable AI model](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/)
+* [Gemini: A Family of Highly Capable Multimodal Models](https://arxiv.org/pdf/2312.11805)
+* [Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context](https://arxiv.org/pdf/2403.05530) - Increased context length - models can now handle up to 10M tokens, with external APIs now offering up to 2 M tokens for text and/or video. Clearer context - The information within the context window is clearer, reducing hallucinations & enabling in-context learning.
+* Gemini - Multimodal from the start - input sequence: Text + Audio + Image + Video => Transformer => Image Decoder,Text Decoder  -> Images, Text
+* Gemini - Combining many advances: TPUs, Model-parallel and data-parallel training, Cross-datacenter training, Fast and automated detection of SDC errors, Pathways, JAX, Distributed representations of words, Tranformers, Sparse Mixture of Experts, Distillation, Chain of Thought decoding, Speculative Decoding, SFT, RLHF, RLMF, RLxF, + ..
+* [Introducing Gemini 2.0: our new AI model for the agentic era](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/) 2.0 Flash model more capable than 1.5 Pro-scale model
+* [Gemini 2.5: Our most intelligent AI model](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/) #1 on Arena with the largest score jump ever (+40)!
+* Tackling More Advanced Mathematics: International Mathematical Olympiad(IMO) Gold-medal Level Performance July 2025 - An advanced version of Gemini Deep Think solved 5/6 IMO problems perfectly, earning 35/42 total points, and achieving gold-medal level performance. [Advanced version of Gemini with Deep Think officially achieves gold-medal standard at the International Mathematical Olympiad](https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/) Key Aspects: Problems solved by a single model with deep thinking and reasoning capabilities, input provided as informal mathematics, all problems solved within 4.5 hour time limit [here](https://storage.googleapis.com/deepmind-media/gemini/IMO_2025.pdf)
+* [A new era of intelligence with Gemini 3](https://blog.google/products-and-platforms/products/gemini/gemini-3/)
+
+#### Organizing a Large-Scale Scientific Effort Like Gemini
+* Core areas - Data, Infra, Serving, Evals, Codebase, Longer-term Research
+* Capabilities - Safety, Vision, Audio, Code, Agents, Internalization
+* Model Development Areas - Pre-training, Post-training, On-device Models
+
+#### Forward Looking
+* **Human & AI Agent Collaboration**
+* Currently, most users are one person interactively working with one model or agent at a time
+* in the future, much more work will happen with a human coordinating activities of dozens or hundreds of AI agents that have been given high level instructions on what to accomplish
+* Many interesting research Qs: 1. How can we give effective reward singnals for less verifiable domains? 2. What is the right HCI paradigm for "managing a team of 50 virtual interns or research assistants"? 3. How can agents themselves cooperatively accomplish complex tasks? 4. What will this enable?
+* **Illusion of Attentinf to All Information**
+* Millions of tokens in context window is incredibly useful. Enables In-context learning, Complex reasoning and extraction/summarization over ~1000 pages of text, multiple hours of video, and/or tens of hours of audio
+* What if e wanted to push this to give the illusion of attending to trillions or tensof trillions of tokens of information? - Hybrid systems with learned retrieval algorithms over very large corpora, lightweight models that can assess relevance, and then attend to most important few hundred documents across large corpora
+* Many uses: Personalized Gemini, Web search, Multimodal search/retrieval, Coding agents over very large databases
+* **Inference Efficiency is Critical**
+* Demand for highly capable models is very high and growing fast
+* Making inference efficient is vital: Specialized hardware designed purely for inference will be important, Model and algorithmic improvements for efficient inference, Low latency for highly capable models is a huge plus: will enable new use cases
+
 
   
 
